@@ -73,8 +73,14 @@ There are a lot of observations here, 452,448 to be exact. To get a better grasp
 
 ```{r}
 #| label: task1
+daymet_data_mutated<-daymet_data |> 
+  mutate(year = str_remove_all(daymet_data_mutated$year, "Y"))
 
-# Your code goes here
+daymet_data_Task1<-daymet_data_mutated |> 
+  group_by(year, cty_name, state, region) |> 
+  summarize(mean_tmin=mean(median_tmin))
+
+kable(head(daymet_data_Task1))
 ```
 
 ## Task 2
