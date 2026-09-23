@@ -110,8 +110,13 @@ kable(head(daymet_data_Task2))
 
 ```{r}
 #| label: task3
-
-# Your code goes here
+ggplot(daymet_data_Task2,
+       aes(x=year, 
+           y=mean_tmin,
+           group=state,
+           color=state))+
+  geom_line(size=.5)+
+  geom_point(size=.75)
 ```
 
 ## Task 4
