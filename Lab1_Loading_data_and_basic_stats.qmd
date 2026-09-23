@@ -125,8 +125,11 @@ ggplot(daymet_data_Task2,
 
 ```{r}
 #| label: task4
+daymet_data_Task4<-daymet_data_Task2 |> 
+  pivot_wider(values_from = mean_tmin,
+              names_from=year)
 
-# Your code goes here
+kable(daymet_data_Task4)
 ```
 
 ## Task 5
