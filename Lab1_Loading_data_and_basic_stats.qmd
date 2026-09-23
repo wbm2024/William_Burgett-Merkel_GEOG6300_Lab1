@@ -89,8 +89,17 @@ kable(head(daymet_data_Task1))
 
 ```{r}
 #| label: task2
+daymet_data_mutated<-daymet_data |> 
+  mutate(year = str_remove_all(daymet_data$year, "Y"))
 
-# Your code goes here
+daymet_data_South_Region<-daymet_data_mutated |>
+  filter(region=="South Region")
+  
+daymet_data_Task2<-daymet_data_South_Region |> 
+  group_by(year, state) |> 
+  summarize(mean_tmin=mean(median_tmin))
+
+kable(head(daymet_data_Task2))
 ```
 
 ## Task 3
