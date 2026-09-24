@@ -138,15 +138,51 @@ kable(daymet_data_Task4)
 
 ```{r}
 #| label: task5
+daymet_data_mutated<-daymet_data |> 
+  mutate(year = str_remove_all(daymet_data$year, "Y"))
 
-# Your code goes here
+daymet_data_Task5<-daymet_data_mutated |> 
+  filter(year=="2015") |> 
+  group_by(year, state, region) |> 
+  summarize(mean_tmax=mean(median_tmax),mean_prcp=mean(sum_prcp))
+
+ggplot(daymet_data_Task5,
+       aes(x=mean_tmax, 
+           y=mean_prcp, 
+           color=region))+
+labs(title="Max Temperature Correlation to Precipitation in 2015",
+     x="Mean Maximum Temperature",y="Mean Precipitation",
+     color="Region")+
+  geom_point()
 ```
 
 ## Task 6
 
 *In the space below, explain what each function in your code for task 5 does to the dataset in plain English.*
 
-*Your response here.*
+My first line of code takes the year data, which is formatted for example as 
+Y2015, and makes it just 2015. I did this to ensure I didn't have any errors 
+converting it or doing analysis. To do this, I took the initial daymet_data 
+file and created a mutated file, where I used the mutate() function to remove 
+"Y" from the year column in the daymet_data.
+
+Next I had to create a new Data Frame. To do this, the first function I employed
+was the filter() function on a new dataset specifically for Task 5 
+(daymet_data_Task5). This functioned filtered the year variable for just 2015.
+Then I used the group_by() function to get all the additional values required
+by the task, which were year, state, and region. I kept year even in the
+group_by() function as it allows the dataset to be used in the future,
+especially if it were to be joined datasets for other years. Lastly, I used the
+summarize() function to calculate the mean max temperature and mean
+precipitation for every state in 2015.
+
+Lastly, to plot the scatterplot i called upon ggyplot(). First, I had to call my
+new data frame (daymet_data_Task5). Then I set the x and y variables to mean max
+temperature and mean precipitation respectively and set the points to be
+differentiated by color based on what region the state is in. Again, for good
+practice, I added an extra step in using labs() to rename the title, x and y
+axis, and legend. To finish the plot, i simply used geom_point() to actually
+generate a scatterplot.
 
 ## Task 7
 
@@ -165,8 +201,6 @@ state_2015 <- daymet_data %>%
     )
   )
 ```
-
-{Your response here}
 
 
 ## Challenge Question
