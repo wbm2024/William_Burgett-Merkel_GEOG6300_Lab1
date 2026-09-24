@@ -151,7 +151,7 @@ ggplot(daymet_data_Task5,
            y=mean_prcp, 
            color=region))+
 labs(title="Max Temperature Correlation to Precipitation in 2015",
-     x="Mean Maximum Temperature",y="Mean Precipitation",
+     x="Mean Maximum Temperature (°C)",y="Mean Precipitation (mm)",
      color="Region")+
   geom_point()
 ```
@@ -176,7 +176,7 @@ especially if it were to be joined datasets for other years. Lastly, I used the
 summarize() function to calculate the mean max temperature and mean
 precipitation for every state in 2015.
 
-Lastly, to plot the scatterplot i called upon ggyplot(). First, I had to call my
+Lastly, to plot the scatterplot i called upon ggplot(). First, I had to call my
 new data frame (daymet_data_Task5). Then I set the x and y variables to mean max
 temperature and mean precipitation respectively and set the points to be
 differentiated by color based on what region the state is in. Again, for good
@@ -201,7 +201,17 @@ state_2015 <- daymet_data %>%
     )
   )
 ```
-
+The across() function allows people to run the same function for different
+columns of data within the same dataset in the same function. In the code for
+task 7, first the dataset was filtered for only the year 2015, then the data was
+grouped to only include the region and state data for each row. The across()
+function was used within the summarize() function to find the mean for both the
+median maximum temperature and sum of precipitation column within one line of
+code. This is a much more efficient way of getting the mean than writing two
+mean functions separated by a comma in the same summarize() function as I did in
+task 5. Next the "na.rm = True" function gets rid of any NA data, and the
+".names = "mean_{.col}"" function creates a name for the new column within the
+new data frame.
 
 ## Challenge Question
 
@@ -223,10 +233,32 @@ In addition to this code, write a short summary of a pattern that's evident in t
 
 Besides class materials, what other sources of assistance did you use while completing this lab? These can include input from classmates, relevant material identified through web searches (e.g., Stack Overflow), or assistance from ChatGPT or other AI tools. How did these sources support your own learning in completing this lab?
 
-*Response here.*
+I used Google AI to help me when I ran into errors that I did not know how to
+fix. An example was in task 5, as I was getting an error that stated the
+"sum_prcp" variable did not exist even thought it obviously does. AI helped me
+understand how R runs the chunk and why it could not find it (I was running
+summarize() twice, which created a new data frame, and when I ran the second
+summarize() the sum_prcp was not in it). I also used it to explain the
+difference in "values_from" and "names_from" for task 4, as states kept ending
+up as columns. Lastly, I used it to understand how the round() function works,
+because when I was running it like how it is in the help section
+(round(x, digits = 0, ...)), it was not working. AI explained to me how they
+worked and told me I needed to overwrite the column, which I figured out how to
+do on my own.
+
+Using AI helps me get a better understanding of the code, specifically when
+errors don't make sense. I can get it to break down how R processes code so I
+can better write my code. It also allows me to learn the processes behind code
+and helps me understand my errors so I can fix them without spending a lot of
+time trying to understand the error. It just can be a general time saver
+compared to stack overflow or other coding help websites.
 
 ### Lab Reflection
 
 How do you feel about the work you did on this lab? Was it easy, moderate, or hard? What are the biggest things you learned by completing it?
 
-*Your response here.*
+I honestly thought the lab was not bad, when I did my initial pass through I
+thought it would be more difficult but once I sat down and thought about how I
+should go about each question I got through it pretty easily. The biggest thing
+I learned is the formatting for ggplot(), and just how streamlined the process
+can be for making charts in R.
