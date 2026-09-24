@@ -181,7 +181,7 @@ new data frame (daymet_data_Task5). Then I set the x and y variables to mean max
 temperature and mean precipitation respectively and set the points to be
 differentiated by color based on what region the state is in. Again, for good
 practice, I added an extra step in using labs() to rename the title, x and y
-axis, and legend. To finish the plot, i simply used geom_point() to actually
+axis, and legend. To finish the plot, I simply used geom_point() to actually
 generate a scatterplot.
 
 ## Task 7
