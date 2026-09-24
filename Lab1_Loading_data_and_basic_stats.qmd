@@ -74,7 +74,7 @@ There are a lot of observations here, 452,448 to be exact. To get a better grasp
 ```{r}
 #| label: task1
 daymet_data_mutated<-daymet_data |> 
-  mutate(year = str_remove_all(daymet_data_mutated$year, "Y"))
+  mutate(year = str_remove_all(year, "Y"))
 
 daymet_data_Task1<-daymet_data_mutated |> 
   group_by(year, cty_name, state, region) |> 
@@ -90,7 +90,7 @@ kable(head(daymet_data_Task1))
 ```{r}
 #| label: task2
 daymet_data_mutated<-daymet_data |> 
-  mutate(year = str_remove_all(daymet_data$year, "Y"))
+  mutate(year = str_remove_all(year, "Y"))
 
 daymet_data_South_Region<-daymet_data_mutated |>
   filter(region=="South Region")
@@ -139,7 +139,7 @@ kable(daymet_data_Task4)
 ```{r}
 #| label: task5
 daymet_data_mutated<-daymet_data |> 
-  mutate(year = str_remove_all(daymet_data$year, "Y"))
+  mutate(year = str_remove_all(year, "Y"))
 
 daymet_data_Task5<-daymet_data_mutated |> 
   filter(year=="2015") |> 
