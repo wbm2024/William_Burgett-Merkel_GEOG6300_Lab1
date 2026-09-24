@@ -176,7 +176,7 @@ especially if it were to be joined datasets for other years. Lastly, I used the
 summarize() function to calculate the mean max temperature and mean
 precipitation for every state in 2015.
 
-Lastly, to plot the scatterplot i called upon ggplot(). First, I had to call my
+Lastly, to plot the scatterplot I called upon ggplot(). First, I had to call my
 new data frame (daymet_data_Task5). Then I set the x and y variables to mean max
 temperature and mean precipitation respectively and set the points to be
 differentiated by color based on what region the state is in. Again, for good
